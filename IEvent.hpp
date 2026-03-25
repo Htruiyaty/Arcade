@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <cstddef>
+
 class IEvent {
 public:
     enum EventType {
@@ -14,21 +16,19 @@ public:
         KEY,
         MOUSE,
         EXIT,
-        DISPLAY_NEXT,
-        DISPLAY_PREV,
-        GAME_NEXT,
-        GAME_PREV,
+        DISPLAY,
+        GAME
     };
 
     enum KeyCode {
-        KEY_UNKNOWN,
-        KEY_UP,
-        KEY_DOWN,
-        KEY_LEFT,
-        KEY_RIGHT,
-        KEY_ENTER,
-        KEY_ESCAPE,
-        KEY_SPACE,
+        KEYCODE_UNKNOWN,
+        KEYCODE_UP,
+        KEYCODE_DOWN,
+        KEYCODE_LEFT,
+        KEYCODE_RIGHT,
+        KEYCODE_ENTER,
+        KEYCODE_ESCAPE,
+        KEYCODE_SPACE,
     };
 
     enum MouseButton {
@@ -42,5 +42,8 @@ public:
     virtual EventType getType() const = 0;
     virtual KeyCode getKey() const = 0;
     virtual MouseButton getMouse() const = 0;
-    virtual std::pair<std::size_t, std::size_t> getPosition() const = 0;
+
+private:
+    std::size_t _x;
+    std::size_t _y;
 };

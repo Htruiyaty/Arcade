@@ -10,6 +10,7 @@
 #include "IEvent.hpp"
 #include "IState.hpp"
 
+#include <memory>
 #include <vector>
 
 class IGame {
@@ -18,6 +19,6 @@ public:
 
     virtual void init() = 0;
     virtual void cleanup() = 0;
-    virtual void update(const std::vector<IEvent> &events) = 0;
-    virtual const IState *getState() const = 0;
+    virtual void update(const std::vector<std::shared_ptr<IEvent>> &events) = 0;
+    virtual IState &getState() = 0;
 };

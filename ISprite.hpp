@@ -7,27 +7,18 @@
 
 #pragma once
 
+#include "Color.hpp"
+
 #include <string>
 
 class ISprite {
 public:
-    enum Color {
-        BLACK,
-        RED,
-        GREEN,
-        YELLOW,
-        BLUE,
-        MAGENTA,
-        CYAN,
-        WHITE
-    };
-
     virtual ~ISprite() = default;
 
-    virtual std::string getTexture() = 0;
-    virtual std::string getCLI() = 0;
+    virtual std::string getTexture() const = 0;
+    virtual std::string getCLI() const = 0;
 
-    virtual std::pair<std::size_t, std::size_t> getPosition() = 0;
-    virtual std::pair<std::size_t, std::size_t> getSize() = 0;
-    virtual Color getColor() = 0;
+    virtual std::pair<std::size_t, std::size_t> getPosition() const = 0;
+    virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
+    virtual std::pair<Color, Color> getColor() const = 0;
 };

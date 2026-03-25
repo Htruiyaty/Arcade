@@ -11,11 +11,14 @@
 #include "IText.hpp"
 #include "ISound.hpp"
 
+#include <memory>
+#include <vector>
+
 class IState {
 public:
     virtual ~IState() = default;
 
-    virtual std::vector<ISprite> getSprites() const = 0;
-    virtual std::vector<IText> getTexts() const = 0;
-    virtual std::vector<ISound> getSounds() const = 0;
+    virtual const std::vector<std::shared_ptr<const ISprite>> &getSprites() const = 0;
+    virtual const std::vector<std::shared_ptr<const IText>> &getTexts() const = 0;
+    virtual const std::vector<std::shared_ptr<const ISound>> &getSounds() const = 0;
 };
